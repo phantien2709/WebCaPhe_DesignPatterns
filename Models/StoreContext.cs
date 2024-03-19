@@ -1,22 +1,20 @@
 ﻿using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace doan.Models
 {
     public class StoreContext
     {
+        public static StoreContext Instance { get; private set; } = new StoreContext();
         public string ConnectionString { get; set; } // Biến thành viên
 
-        public StoreContext(string connectionstring)
+        private StoreContext()
         {
-            this.ConnectionString = connectionstring;
+
         }
 
-        private SqlConnection GetConnection()
+        public SqlConnection GetConnection()
         {
             return new SqlConnection(ConnectionString);
         }
