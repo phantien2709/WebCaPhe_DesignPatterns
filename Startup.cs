@@ -1,4 +1,4 @@
-using AspNetCoreHero.ToastNotification; 
+﻿using AspNetCoreHero.ToastNotification; 
 using doan.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +26,12 @@ namespace doan
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Add(new ServiceDescriptor(typeof(StoreContext), new StoreContext(Configuration.GetConnectionString("DefaultConnection"))));
+            // Tìm Connection string
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            // Đưa Connection string vào Singleton
+            StoreContext.Instance.ConnectionString = connectionString;
+            // Tạo SD bằng Singleton 
+            services.Add(new ServiceDescriptor(typeof(StoreContext), StoreContext.Instance));
             services.AddDbContext<FivemenCoffeeContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
