@@ -287,8 +287,8 @@ namespace doan.Models
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "insert into KhachHang(TENKH,SoDienThoai,NgaySinh,GioiTinh,DiaChi,LoaiKH) " +
-                    "values(@tenkh, @sdt, @ngaysinh, @gt, @diachi,'Dong')";
+                var str = "insert into KhachHang(TENKH, SoDienThoai, NgaySinh, GioiTinh, DiaChi, LoaiKH) " +
+                    "values(@tenkh, @sdt, @ngaysinh, @gt, @diachi, 'Dong')";
                 SqlCommand cmd = new SqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("tenkh", tenKH);
                 cmd.Parameters.AddWithValue("sdt", sdt);
@@ -307,8 +307,8 @@ namespace doan.Models
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "insert into TaiKhoan(SoDienThoai,MatKhau,roleid) " +
-                    "values(@sdt, @pass,2)";
+                var str = "insert into TaiKhoan(SoDienThoai, MatKhau, roleid) " +
+                    "values(@sdt, @pass, 1)";
                 SqlCommand cmd = new SqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("sdt", sdt);
                 cmd.Parameters.AddWithValue("pass", pass);

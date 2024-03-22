@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace doan.Controllers
 {
@@ -50,7 +48,7 @@ namespace doan.Controllers
         [HttpPost]
         public IActionResult DatHang(string ten, string sdt, string diachi, int nvc)
         {
-            if ((ten.Length > 50 || diachi.Length > 50) || (sdt.Length > 10 ))
+            if ((ten.Length > 50 || diachi.Length > 50) || (sdt.Length > 10))
             {
                 _notyfyService.Error("Một số lỗi đã xảy ra. Có vẻ bạn đã nhập sai thông tin giao hàng.");
                 return Redirect("/Giohang/Index_GioHang");
@@ -75,7 +73,7 @@ namespace doan.Controllers
                 if (kh != null)
                 {
                     int maKH = Convert.ToInt32(kh);
-                    int maddh = context.insert_DDH(maKH, tongtien, ngaydh,nvc);
+                    int maddh = context.insert_DDH(maKH, tongtien, ngaydh, nvc);
                     if (maddh != 0)
                     {
                         foreach (var item in dataCart)
