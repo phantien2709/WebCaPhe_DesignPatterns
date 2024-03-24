@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\sv\\nam3 hk2\\Design Pattern\\Fivemen-coffee-website-main\\doan.csproj": {}
+    "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\doan.csproj": {}
   },
   "projects": {
-    "C:\\sv\\nam3 hk2\\Design Pattern\\Fivemen-coffee-website-main\\doan.csproj": {
+    "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\doan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\sv\\nam3 hk2\\Design Pattern\\Fivemen-coffee-website-main\\doan.csproj",
+        "projectUniqueName": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\doan.csproj",
         "projectName": "doan",
-        "projectPath": "C:\\sv\\nam3 hk2\\Design Pattern\\Fivemen-coffee-website-main\\doan.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\sv\\nam3 hk2\\Design Pattern\\Fivemen-coffee-website-main\\obj\\",
+        "projectPath": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\doan.csproj",
+        "packagesPath": "C:\\Users\\domoc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\domoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +38,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -112,7 +121,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

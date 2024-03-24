@@ -255,3 +255,12 @@ insert into HINHANH(LinkHinhAnh, MaSP) values('https://product.hstatic.net/20000
 insert into HINHANH(LinkHinhAnh, MaSP) values('https://product.hstatic.net/200000309869/product/banner_tmdt-02_3439a0e21ae44af9a31efaad9c72ec69_master.png',2);
 insert into HINHANH(LinkHinhAnh, MaSP) values('https://product.hstatic.net/200000309869/product/pha_phin_truyen_thong_1_aec76f2bd76049f780928fa9fc8ec4c2_1024x1024.png',3);
 insert into HINHANH(LinkHinhAnh, MaSP) values('https://product.hstatic.net/200000309869/product/ca_phe_den_dong_chai_100ml_1_3302d233d8dd4c688de08b6aa820e3fd_1024x1024.png',4);
+
+select * from KHACHHANG;
+select * from TAIKHOAN;
+select * from ROLES;
+
+SELECT *
+            FROM TAIKHOAN TK
+            JOIN KHACHHANG KH ON TK.SoDienThoai = KH.SoDienThoai
+            WHERE KH.TenKH = manh

@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using doan.Controllers.AdapterAuthenticator;
 using doan.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,14 @@ namespace doan.Controllers
     public class LoginController:Controller
     {
         private readonly StoreContext _context;
+        private readonly IAuthenticationAdapter _authenticationAdapter;
+
         public INotyfService _notyfyService { get; set; }
-        public LoginController(StoreContext context, INotyfService notifyService)
+        public LoginController(StoreContext context, INotyfService notifyService, IAuthenticationAdapter authenticationAdapter)
         {
             _context = context;
             _notyfyService = notifyService;
+            _authenticationAdapter = authenticationAdapter;
         }
         [HttpGet]
         public IActionResult SignIn()
@@ -45,7 +49,8 @@ namespace doan.Controllers
         {
             var makh = HttpContext.Session.GetString("KhachHang");
             StoreContext context = HttpContext.RequestServices.GetService(typeof(doan.Models.StoreContext)) as StoreContext;
-            Taikhoan tk = context.GetTaikhoan(sdt, pass);
+            Taikhoan tk = _authenticationAdapter.Authenticate(sdt, pass);
+            //Taikhoan tk1 = context.GetTaikhoan(sdt, pass);
             if (tk.MaTk != 0)
             {
                 Roles role = context.GetRoles(tk.RoleId);
@@ -69,6 +74,7 @@ namespace doan.Controllers
                 return RedirectToAction(nameof(SignIn));
             }            
         }
+        
         [HttpPost]
         public IActionResult Dangky(string tenKH, string sdt, DateTime ngay, string gt, string diachi, string pass, string confirmpass)
         {

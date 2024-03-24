@@ -281,6 +281,41 @@ namespace doan.Models
             }
             return kh;
         }
+
+        /*---------------------------
+        *         * SQL Dang nhap bang username
+        *                 * -------------------------*/
+        public Taikhoan GetTaikhoanByUsernameAndPassword(string TenKH, string pass)
+        {
+            Taikhoan tk =  new Taikhoan(); 
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT * FROM TAIKHOAN TK JOIN KHACHHANG KH ON TK.SoDienThoai = KH.SoDienThoai WHERE KH.TenKH = @TenKH and matkhau = @pass";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("TenKH", TenKH);
+                cmd.Parameters.AddWithValue("pass", pass);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        tk.MaTk = Convert.ToInt32(reader["MaTK"]);
+                        tk.SoDienThoai = reader["SoDienThoai"].ToString();
+                        tk.MatKhau = reader["MatKhau"].ToString();
+                        tk.RoleId = Convert.ToInt32(reader["RoleId"]);
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            Console.WriteLine(tk.MaTk);
+            Console.WriteLine(tk.SoDienThoai);
+            return tk;
+
+        }
+
         /* -----------------------------
        *  SQL Dang ky
        *--------------------------------*/
