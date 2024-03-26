@@ -7,24 +7,16 @@
       "RelativeMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|solutionrelative:models\\storecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|c:\\users\\domoc\\documents\\github\\webcaphe\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|c:\\users\\domoc\\documents\\github\\webcaphe\\data\\fivemencoffee.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "AbsoluteMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\data\\fivemencoffee.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
       "RelativeMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|solutionrelative:data\\fivemencoffee.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|c:\\users\\domoc\\documents\\github\\webcaphe\\controllers\\adapterauthenticator\\authenticationadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|solutionrelative:controllers\\adapterauthenticator\\authenticationadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|c:\\users\\domoc\\documents\\github\\webcaphe\\views\\login\\signin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|solutionrelative:views\\login\\signin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|solutionrelative:models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\controllers\\proxy\\secureproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|solutionrelative:controllers\\proxy\\secureproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3FF705A3-FE0B-4B90-A6CA-B4D31D306146}|doan.csproj|c:\\users\\domoc\\documents\\github\\webcaphe\\data\\fivemencoffee.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
@@ -42,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,15 +54,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SignIn.cshtml",
-              "DocumentMoniker": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Views\\Login\\SignIn.cshtml",
-              "RelativeDocumentMoniker": "Views\\Login\\SignIn.cshtml",
-              "ToolTip": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Views\\Login\\SignIn.cshtml",
-              "RelativeToolTip": "Views\\Login\\SignIn.cshtml",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACYAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-24T15:57:15.455Z",
+              "DocumentIndex": 0,
+              "Title": "StoreContext.cs",
+              "DocumentMoniker": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Models\\StoreContext.cs",
+              "RelativeDocumentMoniker": "Models\\StoreContext.cs",
+              "ToolTip": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Models\\StoreContext.cs",
+              "RelativeToolTip": "Models\\StoreContext.cs",
+              "ViewState": "AQIAAOgAAAAAAAAAAAAowE4BAACGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T13:58:06.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SecureProxy.cs",
+              "DocumentMoniker": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Controllers\\Proxy\\SecureProxy.cs",
+              "RelativeDocumentMoniker": "Controllers\\Proxy\\SecureProxy.cs",
+              "ToolTip": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Controllers\\Proxy\\SecureProxy.cs",
+              "RelativeToolTip": "Controllers\\Proxy\\SecureProxy.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAwC4AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T19:41:21.335Z",
               "EditorCaption": ""
             },
             {
@@ -81,22 +86,9 @@
               "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
               "ToolTip": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Controllers\\LoginController.cs",
               "RelativeToolTip": "Controllers\\LoginController.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAADMAAAAMAAAA",
+              "ViewState": "AQIAADUAAAAAAAAAAAA8wEAAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-24T12:42:52.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "StoreContext.cs",
-              "DocumentMoniker": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Models\\StoreContext.cs",
-              "RelativeDocumentMoniker": "Models\\StoreContext.cs",
-              "ToolTip": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Models\\StoreContext.cs",
-              "RelativeToolTip": "Models\\StoreContext.cs",
-              "ViewState": "AQIAAM8AAAAAAAAAAAAmwC8BAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T13:05:48.306Z",
               "EditorCaption": ""
             },
             {
@@ -109,32 +101,6 @@
               "RelativeToolTip": "Data\\FivemenCoffee.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2024-03-24T12:46:22.202Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Taikhoan.cs",
-              "DocumentMoniker": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Models\\Taikhoan.cs",
-              "RelativeDocumentMoniker": "Models\\Taikhoan.cs",
-              "ToolTip": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Models\\Taikhoan.cs",
-              "RelativeToolTip": "Models\\Taikhoan.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T12:42:52.304Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthenticationAdapter.cs",
-              "DocumentMoniker": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Controllers\\AdapterAuthenticator\\AuthenticationAdapter.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdapterAuthenticator\\AuthenticationAdapter.cs",
-              "ToolTip": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\Controllers\\AdapterAuthenticator\\AuthenticationAdapter.cs",
-              "RelativeToolTip": "Controllers\\AdapterAuthenticator\\AuthenticationAdapter.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAiwCAAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T14:57:45.015Z",
               "EditorCaption": ""
             }
           ]

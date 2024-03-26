@@ -1186,6 +1186,7 @@ C:\Users\domoc\Documents\GitHub\WebCaPhe\bin\Debug\net6.0\refs\System.Xml.XPath.
 C:\Users\domoc\Documents\GitHub\WebCaPhe\bin\Debug\net6.0\refs\WindowsBase.dll
 C:\Users\domoc\Documents\GitHub\WebCaPhe\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.Views.dll
 C:\Users\domoc\Documents\GitHub\WebCaPhe\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.dll
+C:\Users\domoc\Documents\GitHub\WebCaPhe\bin\Debug\net6.0\BCrypt.Net-Next.dll
 C:\Users\domoc\Documents\GitHub\WebCaPhe\bin\Debug\net6.0\Humanizer.dll
 C:\Users\domoc\Documents\GitHub\WebCaPhe\bin\Debug\net6.0\LiveCharts.dll
 C:\Users\domoc\Documents\GitHub\WebCaPhe\bin\Debug\net6.0\LiveCharts.WinForms.dll

@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using System.Threading.Tasks;
+using doan.Controllers.Proxy;
 
 namespace doan
 {
@@ -35,6 +36,7 @@ namespace doan
             services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
             services.AddDistributedMemoryCache();
             services.AddScoped<IAuthenticationAdapter, AuthenticationAdapter>();
+            services.AddScoped<SecureProxy>();
             services.AddSession(cfg => {
                 cfg.Cookie.Name = "FivemenCoffee_Session";
                 cfg.IdleTimeout = new TimeSpan(0, 60, 0);

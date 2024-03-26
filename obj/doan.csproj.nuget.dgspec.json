@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[1.1.0, )"
             },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "LiveCharts.WinForms": {
               "target": "Package",
               "version": "[0.9.7.1, )"

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "2shvonVVyyyxNjvHIr0rw1D7/kMZXc2Og9bn0HT7WGqqz8fy/AA/lzZw53agWImONGpE55rXygqaaz0uIAT4GQ==",
+  "dgSpecHash": "UirB7hBtUonIE2rl8d/dWV7eG+UIGZGGOPz5MSvmJvKgb2etRhXf/8J1U0sUKOr/sJQKCiI296H44l7TpJrXKw==",
   "success": true,
   "projectFilePath": "C:\\Users\\domoc\\Documents\\GitHub\\WebCaPhe\\doan.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\domoc\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
+    "C:\\Users\\domoc\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\domoc\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\domoc\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
     "C:\\Users\\domoc\\.nuget\\packages\\livecharts.winforms\\0.9.7.1\\livecharts.winforms.0.9.7.1.nupkg.sha512",
