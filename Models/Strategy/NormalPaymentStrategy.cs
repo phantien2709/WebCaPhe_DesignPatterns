@@ -8,9 +8,7 @@ namespace doan.Models.Strategy
         public object Execute(Dondathang order, HttpContext context)
         {
             // Các giao tác của hoá đơn sẽ được
-            // Controller xử lý do nó chỉ có lưu đơn hàng thành công 
-            // (là thứ mà Context gánh). 
-
+            // Controller xử lý do nó chỉ có lưu đơn hàng thành công         
             throw new System.NotImplementedException();
         }
     }
