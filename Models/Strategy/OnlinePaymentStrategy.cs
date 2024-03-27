@@ -8,7 +8,7 @@ namespace doan.Models.Strategy
     {
         public string VnPayUrl { get; set; }
 
-        public object Execute(Dondathang order, HttpContext context)
+        public object Execute(int amount, string ipv4)
         {
             DotNetEnv.Env.Load();
             DotNetEnv.Env.TraversePath().Load();
@@ -23,13 +23,13 @@ namespace doan.Models.Strategy
             vnpay.AddRequestData("vnp_Version", VnPayLibrary.VERSION);
             vnpay.AddRequestData("vnp_Command", "pay");
             vnpay.AddRequestData("vnp_TmnCode", vnp_TmnCode);
-            vnpay.AddRequestData("vnp_Amount", (order.TongDonHang * 100).ToString()); // Nhân cho 100 để thêm 2 số 0 :) 
+            vnpay.AddRequestData("vnp_Amount", (amount * 100).ToString()); // Nhân cho 100 để thêm 2 số 0
             vnpay.AddRequestData("vnp_BankCode", "VNPAY");
             vnpay.AddRequestData("vnp_CreateDate", DateTime.Now.ToString("yyyyMMddHHmmss"));
             vnpay.AddRequestData("vnp_CurrCode", "VND");
-            vnpay.AddRequestData("vnp_IpAddr", Utils.GetIpAddress(context));
+            vnpay.AddRequestData("vnp_IpAddr", ipv4);
             vnpay.AddRequestData("vnp_Locale", "vn");
-            vnpay.AddRequestData("vnp_OrderInfo", "Thanh toan don dat hang:" + order.MaDdh);
+            vnpay.AddRequestData("vnp_OrderInfo", "Thanh toan don dat hang online");
             vnpay.AddRequestData("vnp_OrderType", "other");
             vnpay.AddRequestData("vnp_ReturnUrl", vnp_Returnurl);
             vnpay.AddRequestData("vnp_TxnRef", DateTime.Now.Ticks.ToString()); // Mã Website (Terminal ID)

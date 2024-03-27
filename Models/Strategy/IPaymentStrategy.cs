@@ -4,6 +4,6 @@ namespace doan.Models.Strategy
 {
     public interface IPaymentStrategy
     {
-        object Execute(Dondathang order, HttpContext context);
+        object Execute(int amount, string ipv4);
     }
 }

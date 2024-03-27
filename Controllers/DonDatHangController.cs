@@ -62,6 +62,7 @@ namespace doan.Controllers
             }
             if (Request.Cookies["GioHang"] != null)
             {
+                (int, int) maddh = (0, 0);
                 var cart = Request.Cookies["GioHang"];
                 List<GioHang> dataCart = JsonConvert.DeserializeObject<List<GioHang>>(cart);
                 if (dataCart.Count > 0)
@@ -72,8 +73,8 @@ namespace doan.Controllers
                 if (kh != null)
                 {
                     int maKH = Convert.ToInt32(kh);
-                    int maddh = paymentContext.SaveOrder(maKH, dataCart, nvc);
-                    if (maddh != 0)
+                    maddh = paymentContext.SaveOrder(maKH, dataCart, nvc);
+                    if (maddh.Item1 != 0)
                     {
                         ViewData["MADDH"] = maddh;
                         Response.Cookies.Delete("GioHang");
@@ -84,7 +85,18 @@ namespace doan.Controllers
                         return Redirect("/Error404/Page404");
                     }
                 }
-                return View();
+                if(paymentMode != 0)
+                {
+                    int amount = maddh.Item2;
+                    string requestUrl = paymentContext.Strategy.Execute(amount, 
+                        HttpContext.Request.Headers["X-Real-IP"].ToString()).ToString();
+
+                    return Redirect(requestUrl);
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {

@@ -24,15 +24,16 @@ namespace doan.Models.Strategy
 
             return tongtien;
         }
-        public int SaveOrder(int customerId, List<GioHang> dataCart, int idShipper)
+        public (int, int) SaveOrder(int customerId, List<GioHang> dataCart, int idShipper)
         {
             try
             {
+                int sump = 0;
                 int maddh = this.Context.insert_DDH(customerId,
                 this.GetTotalAmount(dataCart), DateTime.Now, idShipper);
                 foreach (GioHang item in dataCart)
                 {
-                    int sump = Convert.ToInt32(item.Soluong * item.sanpham.GiaTien);
+                    sump += Convert.ToInt32(item.Soluong * item.sanpham.GiaTien);
                     int tmp = this.Context.insert_CTDH(
                         maddh, item.sanpham.MaSp, item.Soluong, sump
                     );
@@ -40,11 +41,11 @@ namespace doan.Models.Strategy
                     this.Context.update_SanPham(item.sanpham.MaSp, dataSPnew.SoLuong - item.Soluong);
                 }
 
-                return maddh;
+                return (maddh, sump);
             }
             catch
             {
-                return 0;
+                return (0, 0);
             }
         }
     }
