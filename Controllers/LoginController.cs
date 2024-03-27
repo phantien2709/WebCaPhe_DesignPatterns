@@ -49,7 +49,7 @@ namespace doan.Controllers
             if (tk.MaTk != 0)
             {
                 Roles role = context.GetRoles(tk.RoleId);
-                if (role.RoleName.Equals("Khách hàng"))
+                if (role.RoleId + 1 == 1)
                 {
                     Khachhang kh = context.GetKhachHang(tk.SoDienThoai);
                     HttpContext.Session.SetString("KhachHang", kh.MaKh.ToString());
@@ -57,6 +57,8 @@ namespace doan.Controllers
                 }
                 else
                 {
+                    // Sửa lại còn không là dính lỗi bảo mật 
+
                     return Redirect("/Admin");
                 }
                 _notyfyService.Success("Đăng nhập thành công.");
