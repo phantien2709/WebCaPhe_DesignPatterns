@@ -5,7 +5,7 @@
  	create table TAIKHOAN (
 		MaTK int IDENTITY(1,1) PRIMARY KEY,
 		SoDienThoai char(10),
-		MatKhau varchar(20),
+		MatKhau varchar(100),
 		RoleID int
 	);
 
