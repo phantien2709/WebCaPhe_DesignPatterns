@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using BCrypt.Net;
 using doan.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,41 +36,67 @@ namespace doan.Controllers
                 return View();
             }            
         }
-        [HttpPost]        
+        [HttpPost]
         public IActionResult DoiPass(string pass, string passwordtk, string confirmpasswordtk)
         {
             StoreContext context = HttpContext.RequestServices.GetService(typeof(doan.Models.StoreContext)) as StoreContext;
             var tk = HttpContext.Session.GetString("TaiKhoan");
             int matk = Convert.ToInt32(tk);
-            if (pass.Equals(context.GetTaikhoanbyid(matk).MatKhau))
+
+            // Retrieve the current password from the database
+            Taikhoan taikhoan = context.GetTaikhoanbyid(matk);
+            string currentPassword = taikhoan.MatKhau;
+            string inputcurrentPass = BCrypt.Net.BCrypt.HashPassword(pass);
+
+            try
             {
-                if (passwordtk.Equals(confirmpasswordtk))
+                // Check if the current password is hashed (BCrypt)
+                
+                bool isCurrentPasswordHashed = BCrypt.Net.BCrypt.Verify(pass, currentPassword);
+                // Hash the new password if the current password is hashed
+               // string newPassword = isCurrentPasswordHashed ? BCrypt.Net.BCrypt.HashPassword(passwordtk) : passwordtk;
+                    
+                if (isCurrentPasswordHashed)
                 {
-                    if (passwordtk.Length>20)
+                    if (passwordtk.Equals(confirmpasswordtk))
                     {
-                        _notyfyService.Error("Đã có lỗi xảy ra.");
-                        return Redirect("/TaiKhoanKH/Index_TaiKhoan");
-                    }
-                    var tmp = context.DoiPass(matk, passwordtk);
-                    if (tmp != 0)
-                    {
-                        _notyfyService.Success("Đổi mật khẩu thành công.");
+                        if (passwordtk.Length > 20)
+                        {
+                            _notyfyService.Error("Đã có lỗi xảy ra.");
+                            return Redirect("/TaiKhoanKH/Index_TaiKhoan");
+                        }
+                        string newPassword = BCrypt.Net.BCrypt.HashPassword(passwordtk);
+                        // Update the password in the database
+                        int result = context.DoiPass(matk, newPassword);
+
+                        if (result != 0)
+                        {
+                            _notyfyService.Success("Đổi mật khẩu thành công.");
+                        }
+                        else
+                        {
+                            _notyfyService.Error("Đổi mật khẩu thất bại.");
+                        }
                     }
                     else
                     {
-                        _notyfyService.Error("Đổi mật khẩu thất bại.");
+                        _notyfyService.Error("Xác nhận lại mật khẩu sai.");
                     }
                 }
                 else
                 {
-                    _notyfyService.Error("Xác nhận lại mật khẩu sai.");
+                    _notyfyService.Error("Mật khẩu hiện tại sai.");
                 }
             }
-            else
+            catch (System.FormatException)
             {
-                _notyfyService.Error("Mật khẩu hiện tại sai.");
+                // Handle the case where the current password is not hashed (plain text)
+                // Implement appropriate error handling or logging
+                _notyfyService.Error("Lỗi xảy ra khi xác định loại mật khẩu.");
             }
+
             return Redirect("/TaiKhoanKH/Index_TaiKhoan");
         }
+
     }
 }

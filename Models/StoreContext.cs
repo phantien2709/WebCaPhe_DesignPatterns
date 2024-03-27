@@ -217,18 +217,58 @@ namespace doan.Models
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string query = "select * from TaiKhoan where Sodienthoai = @sdt and matkhau=@pass";
+                string query = "SELECT * FROM TaiKhoan WHERE Sodienthoai = @sdt";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("sdt", sdt);
-                cmd.Parameters.AddWithValue("pass", pass);
+                cmd.Parameters.AddWithValue("@sdt", sdt);
+
                 using (var reader = cmd.ExecuteReader())
                 {
-                    while (reader.Read())
+                    if (reader.Read())
                     {
-                        tk.MaTk = Convert.ToInt32(reader["MaTK"]);
-                        tk.SoDienThoai = reader["Sodienthoai"].ToString();
-                        tk.MatKhau = reader["Matkhau"].ToString();
-                        tk.RoleId = Convert.ToInt32(reader["Roleid"]);
+                        try
+                        {
+                            string hashedPasswordFromDB = reader["Matkhau"].ToString();
+
+                            // Compare the hashed password from the database with the user input
+                            bool passwordMatches = BCrypt.Net.BCrypt.Verify(pass, hashedPasswordFromDB);
+
+                            if (passwordMatches)
+                            {
+                                tk.MaTk = Convert.ToInt32(reader["MaTK"]);
+                                tk.SoDienThoai = reader["Sodienthoai"].ToString();
+                                tk.MatKhau = hashedPasswordFromDB; // Store the hashed password
+                                tk.RoleId = Convert.ToInt32(reader["Roleid"]);
+                            }
+                            else
+                            {
+                                // Password does not match, set MaTk to indicate authentication failure
+                                tk.MaTk = -1;
+                            }
+                        }
+                        catch (System.FormatException)
+                        {
+                            // Password from the database is not hashed (old account)
+                            // Compare plain-text password directly
+                            string plainTextPasswordFromDB = reader["Matkhau"].ToString();
+
+                            if (pass == plainTextPasswordFromDB)
+                            {
+                                tk.MaTk = Convert.ToInt32(reader["MaTK"]);
+                                tk.SoDienThoai = reader["Sodienthoai"].ToString();
+                                tk.MatKhau = plainTextPasswordFromDB; // Store the plain-text password
+                                tk.RoleId = Convert.ToInt32(reader["Roleid"]);
+                            }
+                            else
+                            {
+                                // Password does not match, set MaTk to indicate authentication failure
+                                tk.MaTk = -1;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // User with the specified phone number not found, set MaTk to indicate user not found
+                        tk.MaTk = 0;
                     }
                     reader.Close();
                 }
@@ -279,6 +319,76 @@ namespace doan.Models
             }
             return kh;
         }
+
+        /*---------------------------
+        *         * SQL Dang nhap bang username
+        *                 * -------------------------*/
+        public Taikhoan GetTaikhoanByUsernameAndPassword(string TenKH, string pass)
+        {
+            Taikhoan tk =  new Taikhoan();
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT * FROM TAIKHOAN TK JOIN KHACHHANG KH ON TK.SoDienThoai = KH.SoDienThoai WHERE KH.TenKH = @TenKH";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("TenKH", TenKH);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        try
+                        {
+                            string hashedPasswordFromDB = reader["Matkhau"].ToString();
+
+                            // Compare the hashed password from the database with the user input
+                            bool passwordMatches = BCrypt.Net.BCrypt.Verify(pass, hashedPasswordFromDB);
+
+                            if (passwordMatches)
+                            {
+                                tk.MaTk = Convert.ToInt32(reader["MaTK"]);
+                                tk.SoDienThoai = reader["Sodienthoai"].ToString();
+                                tk.MatKhau = hashedPasswordFromDB; // Store the hashed password
+                                tk.RoleId = Convert.ToInt32(reader["Roleid"]);
+                            }
+                            else
+                            {
+                                // Password does not match, set MaTk to indicate authentication failure
+                                tk.MaTk = -1;
+                            }
+                        }
+                        catch (System.FormatException)
+                        {
+                            // Password from the database is not hashed (old account)
+                            // Compare plain-text password directly
+                            string plainTextPasswordFromDB = reader["Matkhau"].ToString();
+
+                            if (pass == plainTextPasswordFromDB)
+                            {
+                                tk.MaTk = Convert.ToInt32(reader["MaTK"]);
+                                tk.SoDienThoai = reader["Sodienthoai"].ToString();
+                                tk.MatKhau = plainTextPasswordFromDB; // Store the plain-text password
+                                tk.RoleId = Convert.ToInt32(reader["Roleid"]);
+                            }
+                            else
+                            {
+                                // Password does not match, set MaTk to indicate authentication failure
+                                tk.MaTk = -1;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // User with the specified phone number not found, set MaTk to indicate user not found
+                        tk.MaTk = 0;
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return tk;
+        }
+
         /* -----------------------------
        *  SQL Dang ky
        *--------------------------------*/
@@ -307,8 +417,9 @@ namespace doan.Models
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = "insert into TaiKhoan(SoDienThoai, MatKhau, roleid) " +
-                    "values(@sdt, @pass, 1)";
+                var str = "insert into TaiKhoan(SoDienThoai,MatKhau,roleid) " +
+                    "values(@sdt, @pass,1)";
+
                 SqlCommand cmd = new SqlCommand(str, conn);
                 cmd.Parameters.AddWithValue("sdt", sdt);
                 cmd.Parameters.AddWithValue("pass", pass);
