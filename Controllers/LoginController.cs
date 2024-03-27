@@ -63,6 +63,7 @@ namespace doan.Controllers
             {
                 //Roles role = context.GetRoles(tk.RoleId);
                 if (tk.RoleId.Equals(1))
+
                 {
                     Khachhang kh = context.GetKhachHang(tk.SoDienThoai);
                     HttpContext.Session.SetString("KhachHang", kh.MaKh.ToString());
@@ -83,6 +84,8 @@ namespace doan.Controllers
                 {
                     _logger.LogWarning("Login into Admin {0}", sdt);
                     _notyfyService.Success("Đăng nhập Admin thành công.");
+                    // Sửa lại còn không là dính lỗi bảo mật 
+
                     return Redirect("/Admin");
                 }
                 
