@@ -334,7 +334,8 @@ namespace doan.Models
 
             modelBuilder.Entity<Voucher>(entity =>
             {
-                entity.HasKey(e => e.MaVoucher)
+                entity.HasKey(e => e.
+                MaVoucher)
                     .HasName("PK__VOUCHER__0AAC5B11CEB078CB");
 
                 entity.ToTable("VOUCHER");

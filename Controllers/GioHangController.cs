@@ -151,7 +151,7 @@ namespace doan.Controllers
             try
             {
                 BundleSanpham bundle = new BundleSanpham();
-                bundle.AddBundle();
+                bundle.AddBundle(3);
                 // Redirect to the Index_GioHang action or any other action as needed
                 return RedirectToAction("Index_GioHang");
             }

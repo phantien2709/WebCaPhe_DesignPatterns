@@ -7,6 +7,6 @@ namespace doan.Controllers.Decorator
     {
         // List of products in the bundle
         List<Sanpham> Products { get; set; }
-        void AddBundle();
+        void AddBundle(int productAmount);
     }
 }

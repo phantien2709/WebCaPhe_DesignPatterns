@@ -1,4 +1,5 @@
-﻿using doan.Controllers.Decorator;
+﻿using AspNetCore;
+using doan.Controllers.Decorator;
 using doan.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +16,12 @@ namespace doan.Controllers
     public class SanphamController : Controller
     {
         private readonly FivemenCoffeeContext _context;
+        private readonly CacheDecorator _cacheDecorator;
         public SanphamController(FivemenCoffeeContext context)
         {
             _context = context;
+            _cacheDecorator = new CacheDecorator();
+            
         }
         public IActionResult Index(int? page)
         {
@@ -25,9 +29,13 @@ namespace doan.Controllers
             {
                 var pageNumber = page == null || page <= 0 ? 1 : page.Value;
                 var pageSize = 21;
-                var IsSanphams = _context.Sanpham.AsNoTracking()
-                    .OrderBy(x => x.MaSp);
-                PagedList<Sanpham> models = new PagedList<Sanpham>(IsSanphams, pageNumber, pageSize);
+
+                var models = _cacheDecorator.Execute(() =>
+                {
+                    var isProduct = _context.Sanpham.AsNoTracking().OrderBy(x => x.MaSp);
+                    return new PagedList<Sanpham>(isProduct, pageNumber, pageSize);
+                }, "Index");
+
                 ViewBag.CurrentPage = pageNumber;
                 return View(models);
             }
@@ -35,62 +43,66 @@ namespace doan.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
-
         }
-        [Route("/{id}/{tendanhmuc}.html")]
 
+        [Route("/{id}/{tendanhmuc}.html")]
         public IActionResult List(int id, int page = 1)
         {
             try
             {
                 var pageSize = 9;
-                var danhmuc = _context.Danhmucsp.Find(id);
-                var IsSanphams = _context.Sanpham.AsNoTracking()
-                    .Where(x => x.MaDanhMuc == id)
-                    .OrderBy(x => x.MaSp);
-                PagedList<Sanpham> models = new PagedList<Sanpham>(IsSanphams, page, pageSize);
+                var category = _context.Danhmucsp.Find(id);
+
+                var models = _cacheDecorator.Execute(() =>
+                {
+                    var isProduct = _context.Sanpham.AsNoTracking()
+                        .Where(x => x.MaDanhMuc == id)
+                        .OrderBy(x => x.MaSp);
+                    return new PagedList<Sanpham>(isProduct, page, pageSize);
+                }, "List", id, page);
+
                 ViewBag.CurrentPage = page;
-                ViewBag.CurrentCat = danhmuc;
+                ViewBag.CurrentCat = category;
                 return View(models);
             }
             catch
             {
                 return RedirectToAction("Index", "Home");
             }
-
-
         }
 
         [Route("/{id}.html")]
-
         public IActionResult Details(int id)
         {
             try
             {
-                var sanpham = _context.Sanpham.Include(x => x.MaDanhMucNavigation).FirstOrDefault(x => x.MaSp == id);
-                if (sanpham == null)
+                var product = _cacheDecorator.Execute(() =>
+                {
+                    return _context.Sanpham.Include(x => x.MaDanhMucNavigation).FirstOrDefault(x => x.MaSp == id);
+                }, "Details", id);
+
+                if (product == null)
                 {
                     return RedirectToAction("Index");
-
                 }
 
-
-                var lsProduct = _context.Sanpham.AsNoTracking()
-                    .Where(x => x.MaDanhMuc == sanpham.MaDanhMuc && x.MaSp != id)
-                    .OrderBy(x => x.MaSp)
-                    .Take(4)
-                    .ToList();
+                var lsProduct = _cacheDecorator.Execute(() =>
+                {
+                    return _context.Sanpham.AsNoTracking()
+                        .Where(x => x.MaDanhMuc == product.MaDanhMuc && x.MaSp != id)
+                        .OrderBy(x => x.MaSp)
+                        .Take(4)
+                        .ToList();
+                }, "RelatedProducts", id);
 
                 ViewBag.Sanpham = lsProduct;
-                return View(sanpham);
+                return View(product);
             }
             catch
             {
                 return RedirectToAction("Index", "Home");
             }
-
         }
-        
+
     }
 }

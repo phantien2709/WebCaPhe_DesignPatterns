@@ -150,7 +150,7 @@ insert into VOUCHER(TenVoucher, TiLeGiamGia, NgayBatDau, NgayKetThuc) values(N'B
 insert into VOUCHER(TenVoucher, TiLeGiamGia, NgayBatDau, NgayKetThuc) values(N'Voucher giảm giá 20%',0.2,'2022-06-01','2021-12-30');
 insert into VOUCHER(TenVoucher, TiLeGiamGia, NgayBatDau, NgayKetThuc) values(N'Không giảm giá',0,'2022-06-12','2023-03-19');
 
-
+select * from VOUCHER;
 -----------------------------------DATA BẢNG DANH MỤC SẢN PHẨM-----------------
 insert into DANHMUCSP(TenDanhMuc,MoTa) values (N'Hạt cà phê',N'Hạt cà phê chất lượng cao');
 insert into DANHMUCSP(TenDanhMuc,MoTa) values (N'Cà phê rang',N'cà phê hạt rang theo công thức gia truyền đặc biệt Fivemen');
@@ -255,3 +255,6 @@ insert into HINHANH(LinkHinhAnh, MaSP) values('https://product.hstatic.net/20000
 insert into HINHANH(LinkHinhAnh, MaSP) values('https://product.hstatic.net/200000309869/product/banner_tmdt-02_3439a0e21ae44af9a31efaad9c72ec69_master.png',2);
 insert into HINHANH(LinkHinhAnh, MaSP) values('https://product.hstatic.net/200000309869/product/pha_phin_truyen_thong_1_aec76f2bd76049f780928fa9fc8ec4c2_1024x1024.png',3);
 insert into HINHANH(LinkHinhAnh, MaSP) values('https://product.hstatic.net/200000309869/product/ca_phe_den_dong_chai_100ml_1_3302d233d8dd4c688de08b6aa820e3fd_1024x1024.png',4);
+
+
+select * from TAIKHOAN;
