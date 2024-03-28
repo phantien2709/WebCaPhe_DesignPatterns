@@ -1,4 +1,5 @@
-﻿using doan.Models;
+﻿using doan.Controllers.Decorator;
+using doan.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
@@ -90,8 +91,6 @@ namespace doan.Controllers
             }
 
         }
-
-
-
+        
     }
 }

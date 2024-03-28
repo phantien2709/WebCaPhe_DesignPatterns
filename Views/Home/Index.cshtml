@@ -173,11 +173,15 @@
         <h2 class="title pb-5 text-center" style="font-family:'Segoe UI'; color:orangered">CHƯƠNG TRÌNH KHUYẾN MÃI</h2>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                <div class="promotion-item">
-                    <div class="promotion-img">
-                        <img src="~/assets/images/promotion/km1.jpg" alt=Promotion Icon" width="400" height="600">
-                        </div>                       
-                    </div>
+                    <form action="/GioHang/AddBundleToCart" method="post">
+                        <div class="promotion-item">
+                            <div class="promotion-img">
+                                <img src="~/assets/images/promotion/km1.jpg" alt="Promotion Icon" width="400" height="600">
+                            </div
+                            <input type="hidden" name="MaSp" value="1"> 
+                            <button type="submit" class="btn btn-warning">Cart</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="promotion-item">

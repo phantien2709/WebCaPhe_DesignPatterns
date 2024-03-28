@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using doan.Controllers.Decorator;
 using doan.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,11 +7,12 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
 namespace doan.Controllers
 {
-    public class GioHangController: Controller
+    public class GioHangController : Controller
     {
         private readonly StoreContext _context;
         public INotyfService _notyfyService { get; set; }
@@ -34,13 +36,13 @@ namespace doan.Controllers
                 List<GioHang> dataCart = JsonConvert.DeserializeObject<List<GioHang>>(cart);
                 if (dataCart.Count > 0)
                 {
-                    
+
                     for (int i = 0; i < dataCart.Count; i++)
                     {
                         Sanpham dataSPnew = context.Product_id(dataCart[i].sanpham.MaSp);
                         if (dataSPnew.SoLuong <= 0)
                         {
-                            _notyfyService.Error("Sản phẩm "+dataCart[i].sanpham.TenSp+" đã hết hàng.");
+                            _notyfyService.Error("Sản phẩm " + dataCart[i].sanpham.TenSp + " đã hết hàng.");
                             dataCart.RemoveAt(i);
                             i--;
                         }
@@ -52,7 +54,7 @@ namespace doan.Controllers
                                 dataCart[i].Soluong = dataSPnew.SoLuong;
                             }
                         }
-                        
+
                     }
                     if (dataCart.Count > 0)
                     {
@@ -93,7 +95,7 @@ namespace doan.Controllers
                        Soluong = 1
                    }
                };
-                
+
                 CookieOptions option = new CookieOptions();
                 option.Expires = DateTime.Now.AddDays(30);
                 Response.Cookies.Append("GioHang", JsonConvert.SerializeObject(listCart), option);
@@ -133,15 +135,32 @@ namespace doan.Controllers
                         Soluong = 1
                     });
                 }
-                
+
                 CookieOptions option = new CookieOptions();
                 option.Expires = DateTime.Now.AddDays(30);
                 Response.Cookies.Append("GioHang", JsonConvert.SerializeObject(dataCart), option);
             }
             _notyfyService.Success("Thêm thành công.");
-            
+
             return Redirect("/Giohang/Index_GioHang");
-            
+
+        }
+        [HttpPost] 
+        public IActionResult AddBundleToCart()
+        {
+            try
+            {
+                BundleSanpham bundle = new BundleSanpham();
+                bundle.AddBundle();
+                // Redirect to the Index_GioHang action or any other action as needed
+                return RedirectToAction("Index_GioHang");
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors, perhaps log them or display a message to the user
+                return RedirectToAction("Index_GioHang"); // Redirect to the cart page or another appropriate page
+            }
+            return Redirect("/Giohang/Index_GioHang");
         }
         [HttpPost]
         public IActionResult Delete_cart(int product_id)
